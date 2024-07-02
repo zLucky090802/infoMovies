@@ -1,0 +1,15 @@
+
+    <div *ngFor="let movie of movies$ | async">
+        <div class="card">
+            <img [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path" alt="">
+            <div class="title">
+                {{movie.original_title}}
+            </div>
+            <div class="date">
+                {{movie.release_date}}
+            </div>
+        </div>
+      
+    </div>
+  
+  
