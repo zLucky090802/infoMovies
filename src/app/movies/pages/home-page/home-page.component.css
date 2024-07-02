@@ -1,18 +1,160 @@
-img{
-    width: 150px;
-    height: 225px;
-    border-radius: 10px;
+img {
+  width: 150px;
+  height: 225px;
+  border-radius: 10px;
 }
-.card{
-    background-color: white;
-    -webkit-box-shadow: 10px 10px 17px -5px rgba(184,180,184,1);
--moz-box-shadow: 10px 10px 17px -5px rgba(184,180,184,1);
-box-shadow: 10px 10px 17px -5px rgba(184,180,184,1);
-width: 150px;
-height: 300px;
-border-radius: 10px;
+.card {
+  background-color: white;
+ 
+  width: 150px;
+  height: 320px;
+
+  border-radius: 10px;
+  font-weight: bold;
 }
-.date{
-color: #666666;
+.containerSearch{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 100%;
+    background-image: url('https://images4.alphacoders.com/135/thumb-1920-1356023.jpeg');
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+}
+#searchTitle{
+    width: 80%;
+  
+    text-align: left;
+    margin-bottom: 20px;
+}
+#searchTitle h1{
+    font-size: 3em;
 }
 
+.search{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    
+}
+.input-container input{
+    width: 77vw;
+    padding-right: 40px; /* Espacio a la derecha del input para el icono */
+    padding-left: 10px; 
+    border-radius: 20px;
+    height: 46px;
+    border: none;
+    outline: none;
+}
+
+.input-container .material-icons {
+    position: absolute; /* Posiciona el icono de búsqueda */
+    top: 50%; /* Alinea verticalmente al centro */
+    right: 10px; /* Ajusta la posición a la derecha */
+    transform: translateY(-50%); /* Centra verticalmente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
+    color: #666; /* Color del icono */
+}
+
+.input-container {
+    position: relative; /* Permite posicionar el icono de búsqueda dentro del input */
+    display: inline-block; /* Permite que los elementos se coloquen en línea */
+}
+
+.date {
+  color: #666666;
+}
+.footer {
+  padding: 5px;
+}
+#principalTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: left;
+  width: 85%;
+}
+.cards {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 85%;
+}
+.cards2 {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+.cards2::-webkit-scrollbar {
+  height: 7px; /* Ancho del scrollbar */
+}
+
+.cards2::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb; /* Color de fondo del thumb */
+  border-radius: 6px; /* Bordes redondeados */
+}
+.cards::-webkit-scrollbar {
+  height: 7px; /* Ancho del scrollbar */
+ 
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb; /* Color de fondo del thumb */
+  border-radius: 6px; /* Bordes redondeados */
+}
+
+.image{
+    background-image: url('https://images7.alphacoders.com/136/thumb-1920-1366073.jpeg'); /* Ruta a tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 0; 
+    background-position: center;
+    background-size: cover;
+}
+
+  
+  
+
+.background {
+  background-color: black;
+}
+#principalTitle2 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: left;
+  width: 90%;
+}
+.popular {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.container {
+  width: 90%;
+  padding: 20px;
+}
+
+.title {
+  width: 90%;
+  text-align: left;
+  font-weight: 600;
+}

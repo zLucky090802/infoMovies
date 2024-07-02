@@ -7,6 +7,10 @@ export const routes: Routes = [
   {
    path:'movies',
    children:MoviesRoutes
+  },
+  {
+    path:'**',
+    redirectTo:'movies'
   }
 
   

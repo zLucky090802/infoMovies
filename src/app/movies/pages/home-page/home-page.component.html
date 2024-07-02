@@ -1,15 +1,90 @@
+<div class="search">
+    <div class="containerSearch">
 
-    <div *ngFor="let movie of movies$ | async">
-        <div class="card">
-            <img [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path" alt="">
-            <div class="title">
-                {{movie.original_title}}
-            </div>
-            <div class="date">
-                {{movie.release_date}}
-            </div>
+        <div id="searchTitle">
+            <h1>Welcome.</h1>
+            <h2>Discover millions of movies, series, and personalities. Explore now!</h2>
         </div>
-      
+        <div class="input-container">
+
+            <input type="text" placeholder="search for a movie, serie, person...">
+            <span class="material-symbols-outlined material-icons">
+                search
+            </span>
+        </div>
+        
     </div>
-  
-  
+      
+    
+</div>
+
+<div class="popular">
+  <div id="principalTitle">Movies-Popular</div>
+  <div class="cards">
+    <div *ngFor="let movie of movies$ | async">
+      <div class="card">
+        <img
+          [src]="
+            'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path
+          "
+          alt=""
+        />
+        <div class="footer">
+          <div class="title" *ngIf="movie.title; else anotherTitle">
+            {{ movie.original_title }}
+          </div>
+          <ng-template #anotherTitle>
+            <div class="title">
+              {{ movie.name }}
+            </div>
+          </ng-template>
+          <div class="date" *ngIf="movie.release_date; else anotherDate">
+            {{ movie.release_date }}
+          </div>
+          <ng-template #anotherDate>
+            <div class="date">
+              {{ movie.first_air_date }}
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="popular">
+  <div class="container image">
+    <div class="background-overlay"></div>
+    <div id="principalTitle2">Series-Popular</div>
+    <div class="cards2">
+      <div *ngFor="let movie of series$ | async">
+        <div class="card">
+          <img
+            [src]="
+              'https://image.tmdb.org/t/p/w220_and_h330_face' +
+              movie.poster_path
+            "
+            alt=""
+          />
+          <div class="footer">
+            <div class="title" *ngIf="movie.title; else anotherTitle">
+              {{ movie.original_title }}
+            </div>
+            <ng-template #anotherTitle>
+              <div class="title">
+                {{ movie.name }}
+              </div>
+            </ng-template>
+            <div class="date" *ngIf="movie.release_date; else anotherDate">
+              {{ movie.release_date }}
+            </div>
+            <ng-template #anotherDate>
+              <div class="date">
+                {{ movie.first_air_date }}
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
