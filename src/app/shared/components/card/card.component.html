@@ -1,0 +1,26 @@
+<div class="card">
+    <img
+      [src]="
+        'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path
+      "
+      alt=""
+    />
+    <div class="footer">
+      <div class="title" *ngIf="movie.title; else anotherTitle">
+        {{ movie.original_title }}
+      </div>
+      <ng-template #anotherTitle>
+        <div class="title">
+          {{ movie.name }}
+        </div>
+      </ng-template>
+      <div class="date" *ngIf="movie.release_date; else anotherDate">
+        {{ movie.release_date }}
+      </div>
+      <ng-template #anotherDate>
+        <div class="date">
+          {{ movie.first_air_date }}
+        </div>
+      </ng-template>
+    </div>
+  </div>

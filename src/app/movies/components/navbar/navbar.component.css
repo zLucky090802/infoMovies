@@ -15,7 +15,10 @@
     font-size: 0.5rem;
     color: white;
     text-align: left;
+    font-weight: bold;
 }
+
+
 
 .container{
     background-color: black;
@@ -27,6 +30,7 @@
 .nav-left a{
     color: white;
     cursor: pointer;
+    font-weight: 600;
 }
 .containerv2{
     width: 90%;
@@ -52,4 +56,62 @@
     color: red;
 }
 
+.nav-item {
+    position: relative; /* Asegura que los menús desplegables se posicionen correctamente */
+  }
+  
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 10px); /* Posición debajo del elemento principal */
+  right: -20;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  color: black;
+}
 
+.nav-menu.active {
+  display: flex; /* Mostrar el menú cuando está activo */
+  width: 10vw;
+}
+
+.nav-menu a {
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background-color: #dbdbdb;
+}
+
+.menu-toggle {
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  color:white;
+  transition: transform 0.3s ease;
+}
+
+/* Media query para diseño responsive */
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    top: calc(100% + 5px); /* Ajuste para dispositivos móviles */
+    right: 0;
+    
+  }
+  .nav-menu.active {
+    display: flex; /* Mostrar el menú cuando está activo */
+    width: 40vw;
+  }
+  .nav-menu{
+    left: 0;
+  }
+  
+}

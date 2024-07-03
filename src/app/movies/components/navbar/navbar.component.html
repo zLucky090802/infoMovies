@@ -1,21 +1,45 @@
+<!-- <div class="container">
+  <div class="containerv2">
+    <div class="nav-left">
+      <div class="logo">
+        <span class="material-symbols-outlined logo icon"> movie </span>
+        <h1>InfoMovies</h1>
+      </div>
+
+      
+     
+      <a href="">Movies</a>
+      <a href="">Series</a>
+      <a href="">People</a>
+    </div>
+    <div class="nav-right">
+      <span class="material-symbols-outlined iconSearch"> search </span>
+    </div>
+  </div>
+</div> -->
 <div class="container">
     <div class="containerv2">
-
-        <div class="nav-left">
-            <div class="logo">
-                <span class="material-symbols-outlined logo icon">
-                    movie
-                </span>
-                <h1>InfoMovies</h1>
-            </div>
-            <a href="">movies</a>
-            <a href="">Series</a>
-            <a href="">People</a>
+      <div class="nav-left">
+        <div class="logo">
+          <span class="material-symbols-outlined logo icon"> movie </span>
+          <h1>InfoMovies</h1>
         </div>
-        <div class="nav-right">
-            <span class="material-symbols-outlined iconSearch">
-                search
-                </span>
+        
+        <div class="nav-item" *ngFor="let item of menuItems">
+          <div class="menu-toggle" (click)="toggleMenu(item)">
+            <span>{{item.name}}</span>
+          </div>
+  
+          <div class="nav-menu" [ngClass]="{ 'active': item.isOpen }">
+            <a *ngFor="let option of item.options" href="#">{{ option }}</a>
+          </div>
         </div>
+        
+      </div>
+  
+      <div class="nav-right">
+        <span class="material-symbols-outlined iconSearch"> search </span>
+      </div>
     </div>
-</div>
+  </div>
+  
