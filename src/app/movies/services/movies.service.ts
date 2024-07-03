@@ -42,4 +42,14 @@ export class MoviesService {
     return this.http.get<MovieResponse>(url,{headers})
     .pipe(map((response: MovieResponse) => response.results))
   }
+
+  findAll(search:string){
+   const url = `${this.baseUrl}/search/multi?query=${search}&include_adult=true&language=en-US&page=1`;
+   const headers = new HttpHeaders({
+    Accept: 'application/json',
+    Authorization: `Bearer ${this.token}`,
+  });
+   return this.http.get<MovieResponse>(url,{headers})
+   .pipe(map((response: MovieResponse) => response.results))
+  }
 }

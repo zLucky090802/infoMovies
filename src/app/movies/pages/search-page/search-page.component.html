@@ -1,0 +1,4 @@
+
+<div *ngFor="let item of movie$ | async" class="cards">
+ <card [movie]="item" [smallCard]="false"></card>
+</div>

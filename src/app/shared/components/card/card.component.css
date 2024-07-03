@@ -1,0 +1,50 @@
+.card img {
+  width: 150px;
+  height: 225px;
+  border-radius: 10px;
+}
+.card {
+  background-color: white;
+
+  width: 150px;
+  height: 320px;
+
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.date {
+  color: #666666;
+}
+.footer {
+  padding: 5px;
+}
+.big-card {
+    display: flex;
+  width: 60vw;
+  background-color: white;
+  -webkit-box-shadow: 10px 5px 12px 0px rgba(243,243,243,1);
+  -moz-box-shadow: 10px 5px 12px 0px rgba(243,243,243,1);
+  box-shadow: 10px 5px 12px 0px rgba(243,243,243,1);
+  margin-bottom: 20px;
+  border-radius: 0 10px 10px 0;
+}
+.title-big-card p{
+    padding-left: 10px;
+    padding-top: 5px;
+    color: #999999;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+}
+ h2{
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 10px;
+}
+img {
+  width: 94px;
+  height: 141px;
+  border-radius: 10px 0 0 10px;
+}

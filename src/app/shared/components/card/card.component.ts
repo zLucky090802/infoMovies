@@ -3,7 +3,7 @@ import { Movie } from '../../../movies/interfaces/movie.interface';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-card',
+  selector: 'card',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card.component.html',
@@ -12,4 +12,7 @@ import { CommonModule } from '@angular/common';
 export class CardComponent {
    @Input()
    public movie!:Movie;
+
+   @Input()
+   public smallCard!: boolean;
 }
