@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../../services/movies.service';
-import { Movie } from '../../interfaces/movie.interface';
-import { Observable } from 'rxjs';
+import { Movie, MovieResponse } from '../../interfaces/movie.interface';
+import { map, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../../../shared/components/card/card.component';
 
@@ -18,7 +18,12 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 })
 export class SearchPageComponent implements OnInit{
   private search!:string;
+  public template!: Observable<MovieResponse>
   public movie$!: Observable<Movie[]>;
+  public movieLength$!: number;
+  public series$!: Observable<Movie[]>;
+  public peopleLength$!: Observable<Movie[]>;
+
 
   constructor(
     private route:ActivatedRoute,
@@ -30,12 +35,28 @@ export class SearchPageComponent implements OnInit{
       this.search = params['searchTerm']
       
       
+      
     })
-    this.find(this.search);
+    this.findSeries();
+    this.movieService.findSerie(this.search).subscribe(
+      result=>{
+        
+      }
+    )
+
   }
+   
 
   find(search:string){
     this.movie$ = this.movieService.findAll(this.search)
+  }
+
+  findSeries(){
+    this.movie$ = this.movieService.findSerie(this.search)
+  }
+
+  findMovie() {
+    this.movie$ = this.movieService.findMovie(this.search)
   }
 
 }

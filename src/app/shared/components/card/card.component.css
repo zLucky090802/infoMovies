@@ -29,10 +29,17 @@
   margin-bottom: 20px;
   border-radius: 0 10px 10px 0;
 }
-.title-big-card p{
-    padding-left: 10px;
-    padding-top: 5px;
-    color: #999999;
+
+.date-big-card{
+  color: #999999;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  
+}
+.description{
+  color: black;
+  padding-left: 10px;
+  font-weight: 300;
 }
 .text{
     display: flex;
@@ -41,7 +48,8 @@
  h2{
     font-size: 1.2em;
     font-weight: 500;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 img {
   width: 94px;
