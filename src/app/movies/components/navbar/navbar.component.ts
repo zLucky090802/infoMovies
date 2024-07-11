@@ -3,11 +3,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'navbar-movies',
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule,MatIconModule,CommonModule],
+  imports: [MatButtonModule, MatMenuModule,MatIconModule,CommonModule,RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })

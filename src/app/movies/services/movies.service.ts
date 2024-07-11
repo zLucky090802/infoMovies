@@ -43,24 +43,41 @@ export class MoviesService {
     .pipe(map((response: MovieResponse) => response.results))
   }
 
-  findAll(search:string){
+  findAll(search:string):Observable<MovieResponse>{
    const url = `${this.baseUrl}/search/multi?query=${search}&include_adult=true&language=en-US&page=1`;
    const headers = new HttpHeaders({
     Accept: 'application/json',
     Authorization: `Bearer ${this.token}`,
   });
    return this.http.get<MovieResponse>(url,{headers})
-   .pipe(map((response: MovieResponse) => response.results))
+   
   }
   
-  findSerie(search:string):Observable<Movie[]>{
+  findSerie(search:string):Observable<MovieResponse>{
     const url = `${this.baseUrl}/search/tv?query=${search}&include_adult=true&language=en-US&page=1`
     const headers = new HttpHeaders({
       Accept: 'application/json',
       Authorization: `Bearer ${this.token}`,
     });
     return this.http.get<MovieResponse>(url,{headers})
-    .pipe(map((response: MovieResponse) => response.results))
+   
+  }
+  findSerieByPage(search:string,page:number){
+    const url = `${this.baseUrl}/search/tv?query=${search}&include_adult=true&language=en-US&page=${page}`
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.http.get<MovieResponse>(url,{headers})
+  }
+
+  findMovieByPage(search:string, page:number){
+    const url = `${this.baseUrl}/search/movie?query=${search}&include_adult=true&language=en-US&page=${page}`
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.http.get<MovieResponse>(url,{headers})
   }
 
   findMovie(search: string){
@@ -70,6 +87,6 @@ export class MoviesService {
       Authorization: `Bearer ${this.token}`,
     });
     return this.http.get<MovieResponse>(url,{headers})
-    .pipe(map((response: MovieResponse) => response.results))
+    
   }
 }

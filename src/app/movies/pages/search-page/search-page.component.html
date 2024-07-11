@@ -1,25 +1,62 @@
 <div class="container">
-    <div class="types">
-        <div class="title">
-            <h1>Search Results</h1>
-        </div>
-        <div class="type" (click)="findSeries()">
-            <h2>Series</h2>
-            <div class="number">20</div>
-        </div>
-        <div class="type" (click)="findMovie()">
-            <h2>Movies</h2>
-            <div class="number">20</div>
-        </div>
-        <div class="type">
-            <h2>People</h2>
-            <div class="number">20</div>
-        </div>
+  <div class="types">
+    <div class="title">
+      <h1>Search Results</h1>
     </div>
-    <div class="cards">
+    <div class="type" (click)="findSeries()">
+      <h2>Series</h2>
+      <div class="number">
+        <p *ngIf="movieResponseSeries">
+          {{ movieResponseSeries.total_results }}
+        </p>
+      </div>
+    </div>
+    <div class="type" (click)="findMovie()">
+      <h2>Movies</h2>
+      <div class="number">
+        <p *ngIf="movieResponseMovie">
+          {{ movieResponseMovie.total_results }}
+        </p>
+      </div>
+    </div>
+    <div class="type">
+      <h2>People</h2>
+      <div class="number">20</div>
+    </div>
+  </div>
+  <div class="cards">
+    <div *ngFor="let item of movie$ | async">
+      <card [movie]="item" [smallCard]="false"></card>
+    </div>
+  </div>
+</div>
+<div class="pages" *ngIf="movieResponseSeries && series">
+  <div
+    class="number-page"
+    *ngFor="
+      let item of getPagesArray(movieResponseSeries.total_pages);
+      let i = index
+    "
+    (click)="findSeriesByPage(i)"
+     [ngClass]="{ 'selected': i+1 === selectedPageIndex +1}"
+  >
+    {{ item }}
+  </div>
+</div>
 
-        <div *ngFor="let item of movie$ | async">
-         <card [movie]="item" [smallCard]="false"></card>
-        </div>
+<div class="pages" *ngIf="movieResponseMovie && movies">
+  <div
+    class="number-page"
+    *ngFor="
+      let item of getPagesArray(movieResponseMovie.total_pages);
+      let i = index
+    "
+
+
+    [ngClass]="{ 'selected': i+1 === selectedPageIndex +1}"
+  >
+    <div class="page" (click)="findMovieByPage(i)" >
+      {{ item }}
     </div>
+  </div>
 </div>
