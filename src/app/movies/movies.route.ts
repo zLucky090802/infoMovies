@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { MoviesTypePageComponent } from './pages/movies-type-page/movies-type-page.component';
 
 export const routes: Routes = [
    {
@@ -15,6 +16,10 @@ export const routes: Routes = [
       {
        path:'search/:searchTerm',
        component:SearchPageComponent
+      },
+      {
+         path:'movie/:type',
+         component: MoviesTypePageComponent
       },
       {
          path:'',

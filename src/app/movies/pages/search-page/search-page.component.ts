@@ -15,7 +15,7 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 })
 export class SearchPageComponent implements OnInit {
   private search!: string;
-  public selectedPageIndex!: number;
+  public selectedPageIndex: number = 0;
   public series: boolean = false;
   public movies: boolean = false;
   public people: boolean = false;
@@ -34,7 +34,7 @@ export class SearchPageComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.search = params['searchTerm'];
     });
-
+    
     this.movieService.findMovie(this.search).subscribe((response) => {
       this.movieResponseMovie = response;
     });
@@ -68,7 +68,7 @@ export class SearchPageComponent implements OnInit {
 
     // this.movieResponse = movieResponse
     // this.movie$ = of (this.movieResponse.results)
-
+    this.selectedPageIndex = 0;
     this.movie$ = of(this.movieResponseSeries!.results);
 
     this.people = false;
@@ -77,6 +77,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   findSeriesByPage(page: number) {
+    
     this.selectedPageIndex = page;
     this.movieService
       .findSerieByPage(this.search, page + 1)
@@ -90,6 +91,8 @@ export class SearchPageComponent implements OnInit {
   }
 
   findMovieByPage(page: number) {
+   
+    console.log(page)
     this.selectedPageIndex = page;
     this.movieService
       .findMovieByPage(this.search, page + 1)
@@ -101,6 +104,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   findMovie() {
+    this.selectedPageIndex = 0;
     this.movie$ = of(this.movieResponseMovie!.results);
     this.series = false;
     this.people = false;

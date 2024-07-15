@@ -38,7 +38,7 @@
       let i = index
     "
     (click)="findSeriesByPage(i)"
-     [ngClass]="{ 'selected': i+1 === selectedPageIndex +1}"
+     [ngClass]="{ 'selected': i  === selectedPageIndex }"
   >
     {{ item }}
   </div>

@@ -17,7 +17,7 @@
     </div>
   </div>
 </div> -->
-<div class="container">
+<!-- <div class="container">
     <div class="containerv2">
       <div class="nav-left">
         <div class="logo" routerLink="/movies/home">
@@ -31,7 +31,7 @@
           </div>
   
           <div class="nav-menu" [ngClass]="{ 'active': item.isOpen }">
-            <a *ngFor="let option of item.options" href="#">{{ option }}</a>
+            <a *ngFor="let option of item.options" href="#" [routerLink]="['/movies/movie/', option]">{{ option }}</a>
           </div>
         </div>
         
@@ -42,4 +42,41 @@
       </div>
     </div>
   </div>
+   -->
+
+   <div class="container">
+    <div class="containerv2">
+      <div class="nav-left">
+        <div class="logo" routerLink="/movies/home">
+          <span class="material-symbols-outlined logo icon"> movie </span>
+          <h1>InfoMovies</h1>
+        </div>
+        
+        <!-- Iterar sobre menuItems -->
+        <div class="nav-item" *ngFor="let item of menuItems">
+          <div class="menu-toggle" (click)="toggleMenu(item)">
+            <span>{{ item.name }}</span>
+          </div>
   
+          <div class="nav-menu" [ngClass]="{ 'active': item.isOpen }">
+            <!-- Renderizar opciones según el nombre del menú -->
+            <ng-container *ngIf="item.name === 'Movies'">
+              <a *ngFor="let option of item.options" [routerLink]="['/movies/movie/', option]">{{ option }}</a>
+            </ng-container>
+            <ng-container *ngIf="item.name === 'Series'">
+              <a *ngFor="let option of item.options" [routerLink]="['/series/series/', option]">{{ option }}</a>
+            </ng-container>
+            <ng-container *ngIf="item.name === 'People'">
+              <a *ngFor="let option of item.options" [routerLink]="['/people/person/', option]">{{ option }}</a>
+            </ng-container>
+          </div>
+        </div>
+        
+      </div>
+  
+      <div class="nav-right">
+        <span class="material-symbols-outlined iconSearch"> search </span>
+      </div>
+    </div>
+  </div>
+   
