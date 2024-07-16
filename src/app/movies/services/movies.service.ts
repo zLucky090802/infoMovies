@@ -20,6 +20,50 @@ export class MoviesService {
     });
   }
 
+  getPopularSeriesByPage(page:number){
+    const url = `${this.baseUrl}/tv/popular?language=en-US&page=${page}'`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<MovieResponse>(url, { headers })
+    .pipe(map((response: MovieResponse) => response.results));
+  }
+
+  getOnAirSeriesByPage(page:number){
+    const url = `${this.baseUrl}/tv/on_the_air?language=en-US&page=${page}'`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<MovieResponse>(url, { headers })
+    .pipe(map((response: MovieResponse) => response.results));
+  }
+
+  getAiringSeriesByPage(page:number){
+    const url = `${this.baseUrl}/tv/airing_today?language=en-US&page=${page}'`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<MovieResponse>(url, { headers })
+    .pipe(map((response: MovieResponse) => response.results));
+  }
+
+  getTopSeriesByPage(page:number){
+    const url = `${this.baseUrl}/tv/top_rated?language=en-US&page=${page}'`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<MovieResponse>(url, { headers })
+    .pipe(map((response: MovieResponse) => response.results));
+  }
+
   getPopularMovies(): Observable<Movie[]> {
     const url = `${this.baseUrl}/movie/popular?language=en-US&page=1'`;
     const headers = new HttpHeaders({

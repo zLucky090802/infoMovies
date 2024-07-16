@@ -3,6 +3,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MoviesTypePageComponent } from './pages/movies-type-page/movies-type-page.component';
+import { SeriesTypePageComponent } from './pages/series-type-page/series-type-page.component';
 
 export const routes: Routes = [
    {
@@ -20,6 +21,10 @@ export const routes: Routes = [
       {
          path:'movie/:type',
          component: MoviesTypePageComponent
+      },
+      {
+         path:'serie/:type',
+         component: SeriesTypePageComponent
       },
       {
          path:'',
