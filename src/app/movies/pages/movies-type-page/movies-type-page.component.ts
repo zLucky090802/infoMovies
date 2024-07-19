@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BehaviorSubject, catchError, concatMap, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Movie } from '../../interfaces/movie.interface';
 import { MoviesService } from '../../services/movies.service';
@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     CardComponent,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './movies-type-page.component.html',
   styleUrl: './movies-type-page.component.css'

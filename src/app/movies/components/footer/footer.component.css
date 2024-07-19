@@ -1,56 +1,104 @@
-*{
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos del footer */
+.footer {
+    background-color: black; /* Fondo del footer oscuro */
+    color: white;
+    padding: 50px 0;
+   
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-logo h1 {
+    color: #c0392b; /* Color del logo rojo */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    color: #ccc; /* Color del texto */
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.footer-logo{
+    margin-right: 20px;
+}
+
+.footer-links {
+    flex: 1;
+}
+
+.footer-links h2 {
+    color: white; /* Color de los títulos de sección */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #ccc; /* Color de los enlaces */
     text-decoration: none;
-    display: flex;
-}
-.logo{
-    color: red;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-
+    transition: color 0.3s ease;
 }
 
+.footer-links a:hover {
+    color: #c0392b; /* Color al pasar el mouse sobre los enlaces */
+}
 
-.logo h1{
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: white; /* Color de los íconos sociales */
     font-size: 1.5rem;
-    color: white;
-}
-.item{
-    display: flex;
-    flex-direction: column;
+    transition: color 0.3s ease;
 }
 
-.items{
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    color: white;
+.social-icons a:hover {
+    color: #c0392b; /* Color al pasar el mouse sobre los íconos sociales */
 }
-.container{
-    background-color: black;
+
+.footer-bottom {
+    text-align: center;
     padding-top: 20px;
-    padding-bottom: 20px;
-    align-items: center;
-    justify-content: center;
 }
-.nav-left a{
-    color: white;
-    cursor: pointer;
-}
-.containerv2{
-    width: 60%;
-    align-items: center;
-    justify-content: center;
-}
-.nav-left{
-    gap: 20px;
-    align-items: center;
-   justify-content: center;
-}
-.logo{
-    display: flex;
-    flex-direction: column;
-}
-.icon{
-    font-size: 4rem;
+
+.footer-bottom p {
+    color: #ccc; /* Color del texto de derechos de autor */
+    font-size: 0.8rem;
 }

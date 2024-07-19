@@ -3,33 +3,40 @@
     <div class="title">
       <h1>Search Results</h1>
     </div>
-    <div class="type" (click)="findSeries()">
-      <h2>Series</h2>
-      <div class="number">
-        <p *ngIf="movieResponseSeries">
-          {{ movieResponseSeries.total_results }}
-        </p>
+    <div class="types2">
+
+      <div class="type" (click)="findSeries()">
+        <h2>Series</h2>
+        <div class="number">
+          <p *ngIf="movieResponseSeries">
+            {{ movieResponseSeries.total_results }}
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="type" (click)="findMovie()">
-      <h2>Movies</h2>
-      <div class="number">
-        <p *ngIf="movieResponseMovie">
-          {{ movieResponseMovie.total_results }}
-        </p>
+      <div class="type" (click)="findMovie()">
+        <h2>Movies</h2>
+        <div class="number">
+          <p *ngIf="movieResponseMovie">
+            {{ movieResponseMovie.total_results }}
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="type">
-      <h2>People</h2>
-      <div class="number">20</div>
+      <div class="type">
+        <h2>People</h2>
+        <div class="number">20</div>
+      </div>
     </div>
   </div>
   <div class="cards">
     <div *ngFor="let item of movie$ | async">
-      <card [movie]="item" [smallCard]="false"></card>
+      <card [movie]="item" [smallCard]="false" *ngIf="item.name;else otherCard" [routerLink]="['/movies/detail/serie/', item.id]"  class="card"></card>
+      <ng-template #otherCard>
+        <card [movie]="item" [smallCard]="false" [routerLink]="['/movies/detail/movie/', item.id]" class="card"></card>
+      </ng-template>
     </div>
   </div>
 </div>
+
 <div class="pages" *ngIf="movieResponseSeries && series">
   <div
     class="number-page"

@@ -20,7 +20,7 @@
   <div id="principalTitle">Movies-Popular</div>
   <div class="cards">
     <div *ngFor="let movie of movies$ | async">
-      <card [movie]="movie" [smallCard]="true"></card>
+      <card [movie]="movie" [smallCard]="true" class="card" [routerLink]="['/movies/detail/movie/', movie.id]"></card>
     </div>
   </div>
   <div class="popular">
@@ -29,7 +29,7 @@
       <div id="principalTitle2">Series-Popular</div>
       <div class="cards2">
         <div *ngFor="let movie of series$ | async">
-          <card [movie]="movie"[smallCard]="true"></card>
+          <card [movie]="movie"[smallCard]="true" [routerLink]="['/movies/detail/serie/',movie.id]" class="card"></card>
         </div>
       </div>
     </div>

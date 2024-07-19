@@ -28,28 +28,33 @@
 </div>
 
 <ng-template #bigCard>
-    <div class="big-card" *ngIf="movie.poster_path">
-
-        <img
-        [src]="
-          'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path
-        "
-        alt=""
-      />
-      <div class="text">
-        <div class="title-big-card" *ngIf="movie.original_title;else anotherTitleBigCard">
-            <h2>{{movie.original_title}}</h2>
-            <p class="date-big-card">{{movie.release_date}}</p>
-            <p class="description">{{movie.overview}}</p>
-        </div>
-        <ng-template #anotherTitleBigCard >
-            <div class="title-bid-card">
-                 
-                <h2>{{movie.name}}</h2>
-                <p class="date-big-card">{{movie.first_air_date}}</p>
-                <p class="description">{{movie.overview}}</p>
-            </div>
-        </ng-template>
+  <div class="big-card" *ngIf="movie.poster_path"  >
+    
+    <img
+      [src]="
+        'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path
+      "
+      alt=""
+    />
+    <div class="text">
+      <div
+        class="title-big-card"
+        *ngIf="movie.original_title; else anotherTitleBigCard"
+      >
+        <h2>{{ movie.original_title }}</h2>
+        <p class="date-big-card">{{ movie.release_date }}</p>
+        <p class="description">{{ movie.overview }}</p>
       </div>
     </div>
+  </div>
+  <ng-template #anotherTitleBigCard>
+    
+     
+      <div class="title-bid-card">
+        <h2>{{ movie.name }}</h2>
+        <p class="date-big-card">{{ movie.first_air_date }}</p>
+        <p class="description">{{ movie.overview }}</p>
+      </div>
+    
+  </ng-template>
 </ng-template>

@@ -13,7 +13,7 @@
     </div> -->
     <div class="cards">
       <div *ngFor="let item of series ">
-        <card [movie]="item" [smallCard]="true"></card>
+        <card [movie]="item" [smallCard]="true"  [routerLink]="['/movies/detail/serie/', item.id]" class="card"></card>
       </div>
     </div>
     <button (click)="loadMore()">Load More</button>

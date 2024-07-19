@@ -1,0 +1,139 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .movie-info {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Cambiado a 'center' para centrar vertical y horizontalmente */
+    min-height: 100vh;
+    overflow: hidden; /* Evita que los elementos se salgan del contenedor */
+    background-color: #000;
+    color: #fff;
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .movie-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://image.tmdb.org/t/p/original/{{ details.backdrop_path }}');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5); /* Ajusta el brillo de la imagen de fondo */
+  }
+  
+  .movie-poster {
+    margin-right: 20px;
+    z-index: 1;
+  }
+  
+  .movie-poster img {
+    width: 300px;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .movie-details {
+    max-width: 600px;
+    z-index: 1;
+    text-align: left; /* Alinear el texto a la izquierda */
+    
+    padding: 20px;
+    margin-left: 20px; /* Margen izquierdo para separar del póster */
+  }
+  
+  .movie-details h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .movie-details h2 {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-details p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #fff;
+  }
+  
+  .movie-details p span {
+    font-weight: bold;
+  }
+  
+  .genres {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .genre-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .genre {
+    background-color: #c0392b;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  
+  
+  .video-iframe {
+    width: 40vw;
+    height: 40vh;
+    margin-top: 20px;
+  }
+  
+  
+  
+  
+  @media (max-width: 768px) {
+    .movie-info {
+        display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      height: 100%;
+    }
+  
+    .movie-poster {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .movie-poster img {
+      max-width: 100%;
+    }
+  
+    .movie-details {
+      max-width: 100%;
+      padding: 0 20px;
+      margin-left: 0; /* Eliminar el margen izquierdo en pantallas pequeñas */
+      margin-top: 20px; /* Añadir margen superior para separar del póster */
+      margin-bottom: 20px;
+    }
+
+    .video-iframe {
+        width: 90vw;
+        height: 40vh;
+      }
+  }
+  

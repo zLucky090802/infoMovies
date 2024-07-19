@@ -1,17 +1,58 @@
 .container {
   width: 100%;
   display: flex;
+  overflow-x: hidden;
   gap: 20px;
   justify-content: center;
   height: 100vh;
   margin-top: 50px;
 }
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 50px;
+    overflow-x: hidden;
+    margin-left: 0px;
+  }
 
+  .container .types {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: 0;
+    display: flex;
+    border-radius: 0px;
+    height: 20%;
+  }
+
+  .container .types .title{
+    border-radius: 0px;
+  }
+
+  .container .types .types2{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .container .types .type{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .cards {
+    width: 100vw;
+    overflow-y: auto; /* Ajusta el comportamiento del scroll si es necesario */
+  }
+}
 .cards {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  margin-right: 70px;
 }
 .cards::-webkit-scrollbar {
   width: 5px; /* Ancho del scrollbar */
@@ -29,6 +70,7 @@
   flex-direction: column;
   border: 1px solid #ebebeb;
   border-radius: 10px;
+  margin-left: 70px;
 }
 .types .type {
   display: flex;
@@ -104,4 +146,8 @@
   font-size: 1.2em;
   padding: 25px;
   font-weight: 600;
+}
+
+.card{
+  cursor: pointer;
 }

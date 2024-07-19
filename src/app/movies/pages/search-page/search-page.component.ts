@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MoviesService } from '../../services/movies.service';
 import { Movie, MovieResponse } from '../../interfaces/movie.interface';
 import { map, Observable, of, tap } from 'rxjs';
@@ -9,7 +9,11 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 @Component({
   selector: 'app-search-page',
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [
+    CommonModule,
+     CardComponent,
+     RouterLink
+    ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.css',
 })
@@ -53,6 +57,7 @@ export class SearchPageComponent implements OnInit {
   find(search: string) {
     this.movieResponse$ = this.movieService.findAll(search);
     this.movieResponse$.subscribe((response) => {
+      console.log(response)
       this.movieResponse = response; // Asigna el MovieResponse completo
       this.movie$ = this.movieResponse$.pipe(map((res) => res.results));
     });
