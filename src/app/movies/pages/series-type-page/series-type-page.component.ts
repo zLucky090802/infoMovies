@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Observable, tap } from 'rxjs';
@@ -19,6 +19,7 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 })
 export class SeriesTypePageComponent implements OnInit {
   
+  public showDiv1 = false;
   public series:Movie[] =[];
   public param : string = '';
   public series$!: Observable<Movie[]>;
@@ -29,6 +30,7 @@ export class SeriesTypePageComponent implements OnInit {
     private service: MoviesService
   ){}
   ngOnInit(): void {
+    this.checkScreenSize()
     this.route.params.subscribe(
       param =>{
         this.param = param['type'];
@@ -57,6 +59,17 @@ export class SeriesTypePageComponent implements OnInit {
     )
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event:Event) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    const width = window.innerWidth;
+
+    this.showDiv1 = width <= 768; 
+    console.log(this.showDiv1)
+  }
 
   loadMore(){
     this.page++;

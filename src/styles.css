@@ -13,6 +13,7 @@
 html{
   scroll-behavior: smooth;
   font-family: 'Roboto';
+  overflow-x: hidden;
 }
 
 body::-webkit-scrollbar{
@@ -23,6 +24,7 @@ body::-webkit-scrollbar-thumb{
   background: #dbdbdb;
   border-radius: 10px;
 }
+
 
 
 

@@ -17,6 +17,12 @@ body {
     padding-top: 50px;
     padding-bottom: 50px;
   }
+
+  .subtitle{
+    display: flex;
+    color: white;
+    justify-content: space-between;
+  }
   
   .movie-background {
     position: absolute;

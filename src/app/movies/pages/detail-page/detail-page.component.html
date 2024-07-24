@@ -30,7 +30,12 @@
    <!-- Detalles de la película -->
    <div class="movie-details">
      <h1>{{ details.title }}</h1>
-     <p>Release Date: <span>{{ details.release_date }}</span></p>
+     <div class="subtitle">
+
+       <p>Release Date: <span>{{ details.release_date }}</span></p>
+       <p></p>
+     </div>
+
      <h2>Overview</h2>
      <p>{{ details.overview }}</p>
      <p>Duración: <span>{{ convertirDuracion(details.runtime) }}</span></p>
@@ -70,8 +75,14 @@
     
       <!-- Detalles de la película -->
       <div class="movie-details">
+        
         <h1>{{ detailsSerie.original_name }}</h1>
-        <p>Release Date: <span>{{ detailsSerie.first_air_date }}</span></p>
+
+        <div class="subtitle">
+
+          <p>Release Date: <span>{{ detailsSerie.first_air_date }}</span></p>
+          <p>{{detailsSerie.vote_average | number: '1.1-1'}}</p>
+        </div>
         <h2>Overview</h2>
         <p>{{ detailsSerie.overview }}</p>
         <p>Seasons: <span>{{ detailsSerie.seasons.length }}</span></p>

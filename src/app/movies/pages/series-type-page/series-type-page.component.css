@@ -16,6 +16,16 @@
     align-items: center;
   }
 
+  .big-card{
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-left: 25px;
+    overflow-x: hidden;
+    
+  }
   .card{
     cursor: pointer;
   }
