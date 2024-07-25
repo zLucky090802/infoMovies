@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { Movie, MovieResponse } from '../interfaces/movie.interface';
 import { detail, detailSerie } from '../interfaces/detail.interface';
 import { Video } from '../interfaces/video.interface';
+import { PeopleResponse } from '../interfaces/person.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -143,6 +144,36 @@ export class MoviesService {
     .pipe(map((response: MovieResponse) => response.results));
   }
 
+  getPeopleByPage(page:number,people:string){
+    const url = `${this.baseUrl}/search/person?query=${people}&include_adult=false&language=en-US&page=${page}'`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<PeopleResponse>(url, { headers })
+    
+  }
+
+  getPeople(people:string){
+    const url = `${this.baseUrl}/search/person?query=${people}&include_adult=false&language=en-US&page=1'`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<PeopleResponse>(url, { headers })
+  }
+
+  getPopularPeopleByPage(page:number){
+    const url = `${this.baseUrl}/person/popular?language=en-US&page=${page}'`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<PeopleResponse>(url, { headers })
+  }
   getUpcomingMoviesByPage(page:number){
     const url = `${this.baseUrl}/movie/upcoming?language=en-US&page=${page}'`;
     const headers = new HttpHeaders({

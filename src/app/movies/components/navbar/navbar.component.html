@@ -67,7 +67,7 @@
               <a *ngFor="let option of item.options" [routerLink]="['/movies/serie/', option]">{{ option }}</a>
             </ng-container>
             <ng-container *ngIf="item.name === 'People'">
-              <a *ngFor="let option of item.options" [routerLink]="['/people/person/', option]">{{ option }}</a>
+              <a *ngFor="let option of item.options" [routerLink]="['/movies/PopularPeople']">{{ option }}</a>
             </ng-container>
           </div>
         </div>

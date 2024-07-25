@@ -5,6 +5,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MoviesTypePageComponent } from './pages/movies-type-page/movies-type-page.component';
 import { SeriesTypePageComponent } from './pages/series-type-page/series-type-page.component';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
+import { PeoplePageComponent } from './pages/people-page/people-page.component';
 
 export const routes: Routes = [
    {
@@ -30,6 +31,10 @@ export const routes: Routes = [
       {
          path:'detail/:type/:id',
          component: DetailPageComponent
+      },
+      {
+         path:'PopularPeople',
+         component: PeoplePageComponent
       },
       {
          path:'',

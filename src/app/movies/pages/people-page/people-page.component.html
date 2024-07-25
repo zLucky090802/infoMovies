@@ -1,0 +1,26 @@
+
+<div class="container">
+   
+    <div class="title">
+        Popular People
+    </div>
+    <!-- <div class="filters">
+        <div class="filter">
+            <h3>Sort by</h3>
+        </div>
+        <div class="filter">
+            <h3>Filter</h3>
+        </div>
+    </div> -->
+    <!-- <div class="cards" *ngIf="!showDiv1">
+      <div *ngFor="let item of series ">
+        <card [movie]="item" [smallCard]="true"  [routerLink]="['/movies/detail/serie/', item.id]" class="card"></card>
+      </div>
+    </div> -->
+    <div class="big-card" >
+        <div *ngFor="let item of people " >
+          <card [person]="item" [smallCard]="true" [movie]="null"  class="card"></card>
+        </div>
+    </div>
+    <button (click)="loadMore()">Load More</button>
+</div>

@@ -1,22 +1,19 @@
-<div class="smallCard" *ngIf="smallCard; else bigCard">
+<div class="smallCard" *ngIf="smallCard && movie">
   <div class="card">
-    <img
-      [src]="
-        'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path
-      "
-      alt=""
-    />
+    <img *ngIf="movie.poster_path"
+         [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path"
+         alt="">
     <div class="footer">
-      <div class="title" *ngIf="movie.title; else anotherTitle">
-        {{ movie.original_title }}
+      <div class="title" *ngIf="movie.title || movie.original_title; else anotherTitle">
+        {{ movie.title || movie.original_title }}
       </div>
       <ng-template #anotherTitle>
         <div class="title">
           {{ movie.name }}
         </div>
       </ng-template>
-      <div class="date" *ngIf="movie.release_date; else anotherDate">
-        {{ movie.release_date }}
+      <div class="date" *ngIf="movie.release_date || movie.first_air_date; else anotherDate">
+        {{ movie.release_date || movie.first_air_date }}
       </div>
       <ng-template #anotherDate>
         <div class="date">
@@ -27,34 +24,66 @@
   </div>
 </div>
 
-<ng-template #bigCard>
-  <div class="big-card" *ngIf="movie.poster_path"  >
-    
-    <img
-      [src]="
-        'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path
-      "
-      alt=""
-    />
-    <div class="text">
-      <div
-        class="title-big-card"
-        *ngIf="movie.original_title; else anotherTitleBigCard"
-      >
-        <h2>{{ movie.original_title }}</h2>
-        <p class="date-big-card">{{ movie.release_date }}</p>
-        <p class="description">{{ movie.overview }}</p>
+<div class="big-card" *ngIf="!smallCard && movie">
+  <img *ngIf="movie.poster_path"
+       [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path"
+       alt="">
+  <div class="text">
+    <div class="title-big-card">
+      <h2 *ngIf="movie.original_title || movie.name; else anotherTitleBigCard">
+        {{ movie.original_title || movie.name }}
+      </h2>
+      <ng-template #anotherTitleBigCard>
+        <div class="title">
+          {{ movie.name }}
+        </div>
+      </ng-template>
+      <p class="date-big-card" *ngIf="movie.release_date || movie.first_air_date">
+        {{ movie.release_date || movie.first_air_date }}
+      </p>
+      <p class="description">
+        {{ movie.overview }}
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="big-card" *ngIf="person && !movie && !smallCard">
+  <img *ngIf="person.profile_path"
+       [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + person.profile_path"
+       alt="">
+  <div class="text">
+    <div class="title-big-card">
+      <h2 *ngIf="person.name; else anotherPersonName">{{ person.name }}</h2>
+      <ng-template #anotherPersonName>
+        <h2 *ngIf="person.original_name">{{ person.original_name }}</h2>
+      </ng-template>
+      <p class="description">Known For Department:</p>
+      <div class="known-for-department">
+        <p>{{ person.known_for_department }}</p>
       </div>
     </div>
   </div>
-  <ng-template #anotherTitleBigCard>
-    
-     
-      <div class="title-bid-card">
-        <h2>{{ movie.name }}</h2>
-        <p class="date-big-card">{{ movie.first_air_date }}</p>
-        <p class="description">{{ movie.overview }}</p>
+</div>
+
+<div class="smallCard" *ngIf="person && !movie && smallCard">
+  <div class="card">
+    <img *ngIf="person.profile_path"
+         [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + person.profile_path"
+         alt="">
+    <div class="footer">
+      <div class="title" *ngIf="person.name; else anotherPersonName">
+        {{ person.name }}
       </div>
-    
-  </ng-template>
-</ng-template>
+      <ng-template #anotherPersonName>
+        <div class="title">
+          {{ person.original_name }}
+        </div>
+      </ng-template>
+      <div class="date">
+        Known For Department: {{ person.known_for_department }}
+      </div>
+    </div>
+  </div>
+</div>

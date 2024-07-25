@@ -5,6 +5,7 @@ import { Movie, MovieResponse } from '../../interfaces/movie.interface';
 import { map, Observable, of, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../../../shared/components/card/card.component';
+import { People, PeopleResponse } from '../../interfaces/person.interface';
 
 @Component({
   selector: 'app-search-page',
@@ -28,6 +29,8 @@ export class SearchPageComponent implements OnInit {
   public movieResponseSeries!: MovieResponse | null;
   public movieResponseMovie!: MovieResponse | null;
   public movie$!: Observable<Movie[]>;
+  public peopleResponse!: PeopleResponse;
+  public people$!: Observable<People[]>
 
   constructor(
     private route: ActivatedRoute,
@@ -52,6 +55,13 @@ export class SearchPageComponent implements OnInit {
     this.movieService.findMovie(this.search).subscribe((movieResponse) => {
       this.movieResponseMovie = movieResponse;
     });
+    
+    this.movieService.getPeople( this.search).subscribe(
+      people =>{
+        this.peopleResponse = people
+        this.people$ = of (this.peopleResponse.results);
+      }
+    )
   }
 
   find(search: string) {
@@ -118,5 +128,28 @@ export class SearchPageComponent implements OnInit {
 
   getPagesArray(totalPages: number): number[] {
     return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }
+
+  findPeopleByPage(page:number){
+    this.movieService.getPeopleByPage(page, this.search).subscribe(
+      people =>{
+        this.peopleResponse = people
+        
+      }
+    )
+  }
+
+  findPeople(){
+    this.selectedPageIndex = 0;
+    this.people$ = of (this.peopleResponse.results);
+    this.series = false;
+    this.people = true;
+    this.movies = false;
+    this.movie$ = of([]);
+    this.people$.subscribe(
+      person =>{
+        console.log(person)
+      }
+    )
   }
 }
