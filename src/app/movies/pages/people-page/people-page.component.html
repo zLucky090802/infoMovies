@@ -19,7 +19,7 @@
     </div> -->
     <div class="big-card" >
         <div *ngFor="let item of people " >
-          <card [person]="item" [smallCard]="true" [movie]="null"  class="card"></card>
+          <card [person]="item" [smallCard]="true" [movie]="null"  class="card" [routerLink]="['/movies/detail/people', item.id]" ></card>
         </div>
     </div>
     <button (click)="loadMore()">Load More</button>

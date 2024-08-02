@@ -4,11 +4,12 @@ import { People, PeopleResponse } from '../../interfaces/person.interface';
 import { Observable, of, tap } from 'rxjs';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-people-page',
   standalone: true,
-  imports: [CardComponent, CommonModule],
+  imports: [CardComponent, CommonModule,RouterLink],
   templateUrl: './people-page.component.html',
   styleUrl: './people-page.component.css',
 })

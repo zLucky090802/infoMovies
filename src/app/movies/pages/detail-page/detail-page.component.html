@@ -33,7 +33,9 @@
      <div class="subtitle">
 
        <p>Release Date: <span>{{ details.release_date }}</span></p>
-       <p></p>
+       <p class="vote-average">
+        <span class="vote-number">{{ details.vote_average | number: '1.1-1' }}</span>
+      </p>
      </div>
 
      <h2>Overview</h2>
@@ -81,7 +83,9 @@
         <div class="subtitle">
 
           <p>Release Date: <span>{{ detailsSerie.first_air_date }}</span></p>
-          <p>{{detailsSerie.vote_average | number: '1.1-1'}}</p>
+          <p class="vote-average">
+            <span class="vote-number">{{ detailsSerie.vote_average | number: '1.1-1' }}</span>
+          </p>
         </div>
         <h2>Overview</h2>
         <p>{{ detailsSerie.overview }}</p>
@@ -109,3 +113,36 @@
       </div>
     </div>
   </ng-template>
+  
+  <div class="profile-container" *ngIf="detailsPerson">
+    <!-- Encabezado del perfil y biografía en una fila -->
+    <div class="profile-header-and-biography">
+        <div class="profile-image-container">
+            <img class="profile-image" src="https://image.tmdb.org/t/p/w185/{{ detailsPerson.profile_path }}" alt="{{ detailsPerson.name }}">
+        </div>
+        <div class="profile-info-and-biography">
+            <div class="profile-info">
+                <h1 class="name">{{ detailsPerson.name }}</h1>
+                <p class="birthday">Fecha de nacimiento: {{ detailsPerson.birthday }}</p>
+                <p class="place-of-birth">Lugar de nacimiento: {{ detailsPerson.place_of_birth }}</p>
+            </div>
+            <div class="biography">
+                <h2>Biografía</h2>
+                <p>{{ detailsPerson.biography }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Películas conocidas -->
+    <div class="movies-section"  >
+        <h2 > Películas Conocidas</h2>
+        <div class="scroll-container">
+            <div class="scroll-content">
+                <div class="movie-card" *ngFor="let movie of Casts?.cast">
+                    <img src="{{ movie.poster_path ? 'https://image.tmdb.org/t/p/w185/' + movie.poster_path : 'https://via.placeholder.com/150' }}" alt="{{ movie.title }}">
+                    <p>{{ movie.title }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

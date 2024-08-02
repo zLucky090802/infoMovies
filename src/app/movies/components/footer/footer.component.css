@@ -11,24 +11,31 @@ body {
     color: #fff; /* Texto blanco */
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 /* Estilos del footer */
 .footer {
     background-color: black; /* Fondo del footer oscuro */
     color: white;
     padding: 50px 0;
-   
+    width: 100%; /* Asegura que el footer ocupe todo el ancho */
+    position: relative; /* Para que el fondo negro se extienda completamente */
+    left: 0;
+    bottom: 0;
 }
 
 .footer-content {
     display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas más pequeñas */
     justify-content: space-between;
     align-items: flex-start;
+    max-width: 1200px; /* Maximo ancho del contenido del footer */
+    margin: 0 auto; /* Centra el contenido */
+    padding: 0 20px; /* Padding horizontal */
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+}
+
+.footer-logo {
+    flex: 1;
+    margin-right: 20px;
 }
 
 .footer-logo h1 {
@@ -44,12 +51,9 @@ body {
     margin-bottom: 20px;
 }
 
-.footer-logo{
-    margin-right: 20px;
-}
-
 .footer-links {
     flex: 1;
+    min-width: 200px; /* Evita que el contenido se vuelva demasiado pequeño */
 }
 
 .footer-links h2 {
@@ -101,4 +105,44 @@ body {
 .footer-bottom p {
     color: #ccc; /* Color del texto de derechos de autor */
     font-size: 0.8rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo, .footer-links {
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo h1 {
+        font-size: 2rem;
+    }
+
+    .footer-links h2 {
+        font-size: 1rem;
+    }
+
+    .footer-links a {
+        font-size: 0.9rem;
+    }
+
+    .social-icons a {
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom p {
+        font-size: 0.7rem;
+    }
 }

@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 import { Movie, MovieResponse } from '../interfaces/movie.interface';
 import { detail, detailSerie } from '../interfaces/detail.interface';
 import { Video } from '../interfaces/video.interface';
-import { PeopleResponse } from '../interfaces/person.interface';
+import { Cast, Casts, PeopleId, PeopleResponse } from '../interfaces/person.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -173,6 +173,25 @@ export class MoviesService {
     });
 
     return this.http.get<PeopleResponse>(url, { headers })
+  }
+  getPeopleById(id:number){
+    const url = `${this.baseUrl}/person/${id}'`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<PeopleId>(url, { headers })
+  }
+
+  getCastPeople(id:number){
+    const url = `${this.baseUrl}/person/${id}/combined_credits`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<Casts>(url, { headers })
   }
   getUpcomingMoviesByPage(page:number){
     const url = `${this.baseUrl}/movie/upcoming?language=en-US&page=${page}'`;

@@ -5,6 +5,7 @@ import { detail, detailSerie } from '../../interfaces/detail.interface';
 import { CommonModule } from '@angular/common';
 import { Video } from '../../interfaces/video.interface';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Casts, PeopleId } from '../../interfaces/person.interface';
 
 @Component({
   selector: 'app-detail-page',
@@ -18,6 +19,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class DetailPageComponent {
  
+  public Casts!:Casts;
+  public detailsPerson!: PeopleId;
   public details!: detail ;
   public detailsSerie!: detailSerie;
   public videosMovies!: Video;
@@ -47,10 +50,26 @@ export class DetailPageComponent {
           }
         )
       }
+      if(param['type'] === 'people'){
+        this.service.getPeopleById(param['id']).subscribe(
+          details =>{
+            this.detailsPerson = details
+            this.getCastsPerson(param['id']);
+          }
+        )
+      }
     }
   )
  }
 
+ getCastsPerson(id:number){
+  this.service.getCastPeople(id).subscribe(
+    casts =>{
+      this.Casts = casts;
+      
+    }
+  )
+ }
  getVideoMovie(id:number){
   console.log(id)
  this.service.getVideosMovieById(id).subscribe(

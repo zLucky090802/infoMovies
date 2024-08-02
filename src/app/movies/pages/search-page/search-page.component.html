@@ -45,8 +45,8 @@
       
     </div>
     <div class="" *ngFor="let item of people$ | async">
-      <div class="" *ngIf="!movie$">
-        <card [person]="item" [smallCard]="false" [routerLink]="['/movies/detail/serie/', item.id]"  class="card"></card>
+      <div class="" *ngIf="people">
+        <card [person]="item" [smallCard]="false" [routerLink]="['/movies/detail/people/', item.id]"  class="card"></card>
       </div>
      
     </div>
@@ -67,7 +67,7 @@
   </div>
 </div>
 
-<div class="pages" *ngIf="movieResponseMovie && movies">
+<div class="pages" *ngIf="movieResponseMovie && movies ">
   <div
     class="number-page"
     *ngFor="
@@ -84,7 +84,7 @@
   </div>
 </div>
 
-<div class="pages" *ngIf="peopleResponse && people$">
+<div class="pages" *ngIf="peopleResponse && people$ && people">
   <div
     class="number-page"
     *ngFor="

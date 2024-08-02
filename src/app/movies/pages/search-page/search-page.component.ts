@@ -29,7 +29,7 @@ export class SearchPageComponent implements OnInit {
   public movieResponseSeries!: MovieResponse | null;
   public movieResponseMovie!: MovieResponse | null;
   public movie$!: Observable<Movie[]>;
-  public peopleResponse!: PeopleResponse;
+  public peopleResponse!: PeopleResponse | null;
   public people$!: Observable<People[]>
 
   constructor(
@@ -131,25 +131,38 @@ export class SearchPageComponent implements OnInit {
   }
 
   findPeopleByPage(page:number){
-    this.movieService.getPeopleByPage(page, this.search).subscribe(
+    this.selectedPageIndex = page
+    this.movieService.getPeopleByPage(page + 1, this.search).subscribe(
       people =>{
+        this.peopleResponse = null
         this.peopleResponse = people
+        console.log(this.peopleResponse)
+        this.people$ = of(this.peopleResponse.results)
         
       }
     )
   }
 
   findPeople(){
-    this.selectedPageIndex = 0;
-    this.people$ = of (this.peopleResponse.results);
-    this.series = false;
-    this.people = true;
-    this.movies = false;
-    this.movie$ = of([]);
-    this.people$.subscribe(
-      person =>{
-        console.log(person)
-      }
-    )
-  }
+  //   this.selectedPageIndex = 0;
+  //   this.people$ = of (this.peopleResponse.results);
+  //   this.series = false;
+  //   this.people = true;
+  //   this.movies = false;
+  //   this.movie$ = of([]);
+  //   this.people$.subscribe(
+  //     person =>{
+  //       console.log(person)
+  //     }
+  //   )
+  this.selectedPageIndex = 0;
+  this.movie$ = of([]); // Limpiar el observable de películas
+  this.people$ = this.movieService.getPeople(this.search).pipe(
+    tap(response => this.peopleResponse = response),
+    map(response => response.results)
+  );
+  this.series = false;
+  this.movies = false;
+  this.people = true;
+   }
 }

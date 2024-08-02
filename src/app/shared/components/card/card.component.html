@@ -1,4 +1,4 @@
-<div class="smallCard" *ngIf="smallCard && movie">
+<div class="smallCard" *ngIf="smallCard && movie && movie.poster_path">
   <div class="card">
     <img *ngIf="movie.poster_path"
          [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path"
@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<div class="big-card" *ngIf="!smallCard && movie">
+<div class="big-card" *ngIf="!smallCard && movie && movie.poster_path">
   <img *ngIf="movie.poster_path"
        [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path"
        alt="">
@@ -50,18 +50,21 @@
 
 
 <div class="big-card" *ngIf="person && !movie && !smallCard">
-  <img *ngIf="person.profile_path"
+  <img *ngIf="person.profile_path; else defaultImg"
        [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + person.profile_path"
        alt="">
+       <ng-template #defaultImg>
+         <img src="https://i.pinimg.com/564x/b1/13/a0/b113a01118e0286ce985ee01543422aa.jpg" alt="">
+       </ng-template>
   <div class="text">
     <div class="title-big-card">
       <h2 *ngIf="person.name; else anotherPersonName">{{ person.name }}</h2>
       <ng-template #anotherPersonName>
         <h2 *ngIf="person.original_name">{{ person.original_name }}</h2>
       </ng-template>
-      <p class="description">Known For Department:</p>
+      <p class="description">{{ person.known_for_department }} </p>
       <div class="known-for-department">
-        <p>{{ person.known_for_department }}</p>
+        <p></p>
       </div>
     </div>
   </div>
@@ -82,7 +85,7 @@
         </div>
       </ng-template>
       <div class="date">
-        Known For Department: {{ person.known_for_department }}
+       {{ person.known_for_department }}
       </div>
     </div>
   </div>
